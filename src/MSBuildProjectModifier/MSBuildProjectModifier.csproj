@@ -4,7 +4,34 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>MsBuild Project Modifier</Title>
+    <Authors>saqibhaneef</Authors>
+    <PackageProjectUrl>https://dotnetcodecrafters.com/MsBuild-Project-Modifier</PackageProjectUrl>
+    <Description>MSBuildProjectModifier is a .NET library that enables easy manipulation of MSBuild project files (.csproj) programmatically. With a simple API, you can add, remove, or update project configurations and references, streamlining your build processes and enhancing your development workflow.</Description>
+    <RepositoryType></RepositoryType>
+    <PackageTags>MSBuild, MsBuildProjectModifier, .Net 8.0</PackageTags>
+    <RepositoryUrl>https://github.com/saqibhaneef/MSBuildProjectModifier</RepositoryUrl>
+    <PackageIcon>MsBuild Project Modifier Icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\Icons\MsBuild Project Modifier Icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Build" Version="17.11.4" />
