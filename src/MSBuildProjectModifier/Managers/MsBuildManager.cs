@@ -1,4 +1,4 @@
-﻿// <copyright file="IMsBuildManager.cs" company="DotnetCodeCrafters">
+﻿// <copyright file="MsBuildManager.cs" company="DotnetCodeCrafters">
 // Copyright (c) Dotnet Code Crafters
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 // </copyright>
