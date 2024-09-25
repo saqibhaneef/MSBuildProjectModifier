@@ -22,6 +22,7 @@ Or use the NuGet Package Manager in Visual Studio:
 ```bash
 Install-Package MSBuildProjectModifier
 ```
+## Sample Project : [MSBuild Project Modifier Sample](https://github.com/saqibhaneef/MSBuild-Project-Modifier-Sample)
 
 ## Usage
 
@@ -47,7 +48,7 @@ public class Example
         string projectFilePath = @"path\to\your\project.csproj";
         string filePath = @"path\to\your\file.config";
         string itemType = "Content";
-        ProjectLoadSettings loadSettings = ProjectLoadSettings.Default;
+        MsBuildProjectModifierLoadOptions loadSettings = MsBuildProjectModifierLoadOptions.Default;
 
         _msBuildManager.AddReference(projectFilePath, filePath, itemType, loadSettings);
     }
@@ -84,7 +85,7 @@ public bool CheckProjectExists()
 
 ## API
 
-### `AddReference(string projectFilePath, string filePath, string itemType, ProjectLoadSettings projectLoadSettings)`
+### `AddReference(string projectFilePath, string filePath, string itemType, MsBuildProjectModifierLoadOptions projectLoadSettings)`
 - **projectFilePath**: Full path to the MSBuild project file.
 - **filePath**: Full path to the file you want to add as a reference.
 - **itemType**: The type of item to add (e.g., `Content`, `Reference`).
