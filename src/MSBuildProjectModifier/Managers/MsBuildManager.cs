@@ -14,25 +14,24 @@ namespace MSBuildProjectModifier.Managers
     internal class MsBuildManager : IMsBuildManager
     {        
 
-        public void AddReference(string projectFilePath, string filePath, string itemType = "Content", ProjectLoadSettings projectLoadSettings = ProjectLoadSettings.Default)
-        {
+        public bool AddReference(string projectFilePath, string filePath, string itemType, MsBuildProjectModifierLoadOptions projectLoadSettings)
+        {            
+                if (ProjectCollection.GlobalProjectCollection.Count > 0)
+                {
+                    ProjectCollection.GlobalProjectCollection.UnloadAllProjects();
+                }
 
+                Project projectFile = Project.FromFile(projectFilePath, new ProjectOptions()
+                {
+                    LoadSettings = (ProjectLoadSettings)projectLoadSettings
+                });
 
-            if (ProjectCollection.GlobalProjectCollection.Count > 0)
-            {
-                ProjectCollection.GlobalProjectCollection.UnloadAllProjects();
-            }
+                projectFile.AddItem(itemType, filePath);
+                projectFile.Save();
 
-            Project projectFile = Project.FromFile(projectFilePath, new ProjectOptions()
-            {
-                LoadSettings = projectLoadSettings
-            });
+                Console.WriteLine($"Reference = {filePath} added at Path: {projectFilePath}");
 
-            projectFile.AddItem(itemType, filePath);
-            projectFile.Save();
-            
-            Console.WriteLine($"Reference = {filePath} added at Path: {projectFilePath}");
-
+                return true;            
         }
 
         public bool IsProjectExists(string projectFilePath)
@@ -41,7 +40,7 @@ namespace MSBuildProjectModifier.Managers
             return projectFileInfo.Exists;
         }
 
-        public bool IsReferenceExists(string projectFilePath, string filePath, string attribute = "Include", LoadOptions loadOptions = LoadOptions.PreserveWhitespace)
+        public bool IsReferenceExists(string projectFilePath, string filePath, string attribute, LoadOptions loadOptions)
         {
             FileInfo projectFileInfo = new FileInfo(projectFilePath);
             bool isReferenceExists = false;

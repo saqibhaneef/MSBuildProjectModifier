@@ -3,7 +3,6 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 // </copyright>
 
-using Microsoft.Build.Evaluation;
 using System.Xml.Linq;
 
 namespace MSBuildProjectModifier.Managers
@@ -18,7 +17,7 @@ namespace MSBuildProjectModifier.Managers
         /// <param name="filePath">The full file path of the file to be added as a reference.</param>
         /// <param name="itemType">The type of the item to be added (e.g., Content, Reference).</param>
         /// <param name="projectLoadSettings">The settings used when loading the project.</param>
-        public void AddReference(string projectFilePath, string filePath, string itemType, ProjectLoadSettings projectLoadSettings);
+        public bool AddReference(string projectFilePath, string filePath, string itemType = "Content", MsBuildProjectModifierLoadOptions projectLoadSettings = MsBuildProjectModifierLoadOptions.IgnoreMissingImports);
 
         /// <summary>
         /// Checks if a reference to the specified file exists in the given MSBuild project file.
@@ -28,7 +27,7 @@ namespace MSBuildProjectModifier.Managers
         /// <param name="attribute">The attribute to be checked for the reference (e.g., Include).</param>
         /// <param name="loadOptions">Options that affect how the XML is loaded.</param>
         /// <returns>True if the reference exists; otherwise, false.</returns>
-        public bool IsReferenceExists(string projectFilePath, string filePath, string attribute, LoadOptions loadOptions);
+        public bool IsReferenceExists(string projectFilePath, string filePath, string attribute = "Include", LoadOptions loadOptions = LoadOptions.PreserveWhitespace);
 
         /// <summary>
         /// Checks if the specified MSBuild project file exists.
